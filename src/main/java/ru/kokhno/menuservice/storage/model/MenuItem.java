@@ -7,6 +7,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.proxy.HibernateProxy;
+import org.springframework.format.annotation.DateTimeFormat;
+import ru.kokhno.menuservice.util.DateUtil;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -44,9 +46,11 @@ public class MenuItem {
     @Column(name = "ingredient_collection", columnDefinition = "jsonb")
     private IngredientCollection ingredientCollection;
     @CreationTimestamp
+    @DateTimeFormat(pattern = DateUtil.DATE_FORMAT)
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
     @UpdateTimestamp
+    @DateTimeFormat(pattern = DateUtil.DATE_FORMAT)
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
